@@ -17,25 +17,41 @@ import java.util.List;
 @RequestMapping("events")
 public class EventController {
 
-    private static List<String> events = new ArrayList<>();
+    //private static List<String> events = new ArrayList<>();
 
     @GetMapping
     public String displayAllEvents(Model model) {
-        model.addAttribute("title", "All Events");
+        List<String> events = new ArrayList<>();
+        events.add("Code With Pride");
+        events.add("Strange Loop");
+        events.add("Apple WWDC");
+        events.add("SpringOne Platform");
         model.addAttribute("events", events);
         return "events/index";
     }
-
+    //lives at /events/create
     @GetMapping("create")
-    public String displayCreateEventForm(Model model) {
-        model.addAttribute("title", "Create Event");
+    public String renderCreateEventForm() {
         return "events/create";
     }
 
-    @PostMapping("create")
-    public String processCreateEventForm(@RequestParam String eventName) {
-        events.add(eventName);
-        return "redirect:";
-    }
+//    @GetMapping
+//    public String displayAllEvents(Model model) {
+//        model.addAttribute("title", "All Events");
+//        model.addAttribute("events", events);
+//        return "events/index";
+//    }
+
+//    @GetMapping("create")
+//    public String displayCreateEventForm(Model model) {
+//        model.addAttribute("title", "Create Event");
+//        return "events/create";
+//    }
+//
+//    @PostMapping("create")
+//    public String processCreateEventForm(@RequestParam String eventName) {
+//        events.add(eventName);
+//        return "redirect:";
+//    }
 
 }
